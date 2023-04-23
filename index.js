@@ -1,15 +1,27 @@
 let choices = ["rock", "paper", "scissors"];
 let computerChoice;
-let playerChoice;
+let playerChoice = prompt("Do you choose Rock, Paper, or Scissors?")
 let computerScore;
 let playerScore;
 
 function getComputerChoice() {
     computerChoice = choices[Math.floor(Math.random()*choices.length)];
-    console.log(computerChoice);
+    console.log("Computer chose " + computerChoice);
+    return(computerChoice);
+}
+
+function playGame(playerChoice, computerChoice) {
+    
+    if (computerChoice==="rock" && playerChoice.toUpperCase()==="SCISSORS") {
+        console.log("You win!");
+    } else {
+        console.log("You lose");
+    }
 }
 
 getComputerChoice();
+playGame(playerChoice, computerChoice);
+
 
 
 /*
