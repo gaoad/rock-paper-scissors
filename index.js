@@ -24,7 +24,7 @@ function lose() {
 }
 
 
-function playGame(playerChoice, computerChoice) {
+function playRound(playerChoice, computerChoice) {
 
     playerChoice = prompt("Do you choose Rock, Paper, or Scissors?")
     console.log("You chose " + playerChoice);
@@ -32,11 +32,11 @@ function playGame(playerChoice, computerChoice) {
 
     if (computerChoice==="rock") {
         if (playerChoice.toUpperCase()==="SCISSORS") {
-            win();
+            lose();
         } else if (playerChoice.toUpperCase()==="ROCK") {
             tie();
         } else if (playerChoice.toUpperCase()==="PAPER") {
-            lose();
+            win();
         } else {
             console.log("Please enter a valid choice")
         }
@@ -64,21 +64,28 @@ function playGame(playerChoice, computerChoice) {
         console.log("Something went horribly wrong")
     }
 
-    console.log("SCORE  You: " + playerScore + "    Computer: " + computerScore)
+    console.log("SCORE  You: " + playerScore + "    Comp: " + computerScore)
 
 }
 
-getComputerChoice();
-playGame(playerChoice, computerChoice);
-getComputerChoice();
-playGame(playerChoice, computerChoice);
-getComputerChoice();
-playGame(playerChoice, computerChoice);
-getComputerChoice();
-playGame(playerChoice, computerChoice);
-getComputerChoice();
-playGame(playerChoice, computerChoice);
+function playGame() {
 
+    for (let i=0;; i++) {
+        getComputerChoice();
+        playRound(playerChoice, computerChoice);
+        if (playerScore === 3) {
+            console.log("You are the ultimate winner!");
+            break;
+        } else if (computerScore === 3) {
+            console.log("You are a failure and no one loves you...");
+            break;
+        }
+    }
+
+}
+
+
+playGame();
 
 
 /*
